@@ -5,6 +5,8 @@
 - 디폴트 비밀번호: Spring-Security에서 자동 생성해준 비밀번호
 - 로그아웃
   - localhost:8181/logout
+- configure
+  - .formLogin()
   
 ### 2) Basic Authentication
 - 모든 요청의 헤더에 Basic64로 인코딩된 username:password를 포함시키면서 서버에 요청을 보냄
@@ -142,4 +144,14 @@ public void registerNewStudent(@RequestBody Student student) {
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
+```
+
+### 7) CSRF(Cross Site Request Forgery)
+
+- [https://velog.io/@dnjscksdn98/Network-CSRF](https://velog.io/@dnjscksdn98/Network-CSRF%EB%9E%80)
+
+- configure
+
+```
+.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 ```
